@@ -5,6 +5,8 @@ and its subordinate recursive function"""
 
 def canUnlockAll(boxes):
     """ returns true if all boxes can be unlocked else false"""
+    if not boxes or len(boxes) == 0:
+        return False
     boxescp = boxes
     foundkeys = []
     unlockRecursively(boxescp, 0, foundkeys)
