@@ -15,6 +15,7 @@ def canUnlockAll(boxes):
             return False
     return True
 
+
 def unlockRecursively(boxescp, idx, foundkeys):
     """ recursive algorithm that unlocks all available boxes"""
     if idx < len(boxescp):
