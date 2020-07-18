@@ -5,8 +5,6 @@ and its subordinate recursive function"""
 
 def canUnlockAll(boxes):
     """ returns true if all boxes can be unlocked else false"""
-    if not boxes or len(boxes) == 0:
-        return False
     boxescp = boxes
     foundkeys = []
     unlockRecursively(boxescp, 0, foundkeys)
@@ -17,11 +15,9 @@ def canUnlockAll(boxes):
             return False
     return True
 
-
 def unlockRecursively(boxescp, idx, foundkeys):
     """ recursive algorithm that unlocks all available boxes"""
-    for llave in boxescp[idx]:
-        if llave not in foundkeys:
-            foundkeys.append(llave)
-        boxescp[idx].remove(llave)
-    boxescp[idx].append('open')
+    if idx < len(boxescp):
+        if 'open' not in boxescp[idx]:
+            foundkeys += boxescp[idx]
+            boxescp[idx] = ['open']
