@@ -19,41 +19,113 @@ heap_t *create(int value)
         return (new);
 }
 
+/**
+ * create - creates a new node
+ *
+ * Return: 0 on success, error code on failure
+ */
+
+void swap(int *a, int *b)
+{
+	int temp = *b;
+	*b = *a;
+	*a = temp;
+}
+
  /**
  * main - inserts a new node
  *
  * Return: 0 on success, error code on failure
  */
 
-heap_t *heap_insert(heap_t **root, int value)
+Queue *createQueue(int size)
 {
-	heap_t *new = create(value);
-	if (!new)
-		return (NULL)
-	heap_t *tmp = *root;
+	int i;
+	struct Queue* queue = (struct Queue*) malloc(sizeof( struct Queue ));
 
-	if (*root = NULL)
-	{
-		root = new;
-		return (new);
-	}
-	else
-		first_av_ins(root, new);
-
-	return (new);
-
+	queue->front = queue->rear = -1;
+	queue->size = size;
+	queue->array = (heap_t **) malloc
+		(queue->size * sizeof(heap_t));
+	for (i = 0; i < size; ++i)
+		queue->array[i] = NULL;
+	return (queue);
 }
 
- /**
- * first_av_ins- finds the first available node and inserts
- *
- * Return: the address to the last
- */
-
-heap_t *first_av_ins( heap_t **root, heap_t *new_node)
+heap_t *getFront(Queue *queue)
 {
-	heap_t *tmp, *tmp2;
-	size_t depthr = 0;
+	printf("entre a la función de getfront\n");
+	return (queue->array[queue->front]);
+}
 
-	if()
+void Enqueue(heap_t *root, Queue *queue)
+{
+	printf("entre a la función de enqueue, mi root es %d\n", root->n);
+	if (queue->rear == queue->size -1)
+		return;
+	queue->array[++queue->rear] = root;
+	if (queue->front == -1)
+		++queue->front;
+}
+
+heap_t *Dequeue(Queue *queue)
+{
+	if (queue->front == -1)
+		return NULL;
+
+	heap_t *temp = queue->array[queue->front];
+
+	if (queue->front == queue->rear)
+		queue->front = queue->rear = -1;
+	else
+		++queue->front;
+	return (temp);
+}
+
+heap_t *insert(heap_t **root, int n, Queue *queue)
+{
+	printf("entré a insertar \n");
+	heap_t *new = create(n);
+	heap_t *front;
+
+	if (!new)
+		return (NULL);
+
+	if (!*root)
+        	*root = new;
+	else
+	{
+		printf("me toco buscar nodo en el q\n");
+		front = getFront(queue);
+		printf("recibi el nodo frontal %d\n", front->n);
+		if (!front->left)
+		{
+			front->left = new;
+			printf("asigne al hijo izq");
+		}
+
+
+		else if (!front->right)
+		{
+			front->right = new;
+			printf("asigne al hijo derecho");
+		}
+
+		if (front->left && front->right)
+			Dequeue(queue);
+
+	}
+        Enqueue(new, queue);
+
+	return (new);
+}
+
+heap_t *heap_insert(heap_t **root, int value)
+{
+	printf("entré \n");
+	heap_t *res;
+	Queue *queue = createQueue(SIZE);
+	res = insert(root, value, queue);
+	printf("el valor de res es %d\n", res->n);
+	return (res);
 }
