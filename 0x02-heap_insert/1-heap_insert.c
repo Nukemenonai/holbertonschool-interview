@@ -2,26 +2,6 @@
 #include <stdio.h>
 #include "binary_trees.h"
 
-Queue *queue = createQueue(SIZE);
-
-/**
- * create - creates a new node
- * @value: number to be inserted
- * Return: 0 on success, error code on failure
- */
-
-heap_t *create(int value)
-{
-	heap_t *new = malloc(sizeof(heap_t));
-
-	if (new == NULL)
-		return (NULL);
-	new->n = value;
-	new->left = NULL;
-	new->right = NULL;
-	return (new);
-}
-
 /**
  * swap - creates a new node
  * @a: first pointer
@@ -57,18 +37,6 @@ Queue *createQueue(int size)
 
 
 /**
- * getFront - creates a new node
- * @queue: the queue to insert to
- * Return: 0 on success, error code on failure
- */
-
-heap_t *getFront(Queue *queue)
-{
-	return (queue->array[queue->front]);
-}
-
-
-/**
  * Enqueue - creates a new node
  * @root: the pointer to the root node
  * @queue: the queue to use
@@ -85,43 +53,26 @@ void Enqueue(heap_t *root, Queue *queue)
 		++queue->front;
 }
 
-
-/**
- * Dequeue - creates a new node
- * @queue: the queue to use
- * Return: 0 on success, error code on failure
- */
-
-
-heap_t *Dequeue(Queue *queue)
-{
-	if (queue->front == -1)
-		return (NULL);
-
-	heap_t *temp = queue->array[queue->front];
-
-	if (queue->front == queue->rear)
-		queue->front = queue->rear = -1;
-	else
-		++queue->front;
-	return (temp);
-}
-
-
 /**
  * insert - creates a new node
  * @root: the double pointer to the variable to use
+ * @n: value to insert
  * @queue: the queue to use
  * Return: 0 on success, error code on failure
  */
 
 heap_t *insert(heap_t **root, int n, Queue *queue)
 {
-	heap_t *new = create(n);
+
+	heap_t *new = malloc(sizeof(heap_t));
 	heap_t *front;
 
-	if (!new)
+	if (new == NULL)
 		return (NULL);
+	new->n = value;
+	new->left = NULL;
+	new->right = NULL;
+	return (new);
 
 	if (!*root)
 		*root = new;
