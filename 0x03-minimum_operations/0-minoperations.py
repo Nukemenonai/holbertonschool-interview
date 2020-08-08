@@ -14,6 +14,7 @@ def _isprime(n):
         else:
             return True
 
+
 def ops_registry(li, n, lenchar, last_batch_copied):
     """ dynamic programming algo"""
     if lenchar == n:
@@ -33,9 +34,9 @@ def ops_registry(li, n, lenchar, last_batch_copied):
 def minOperations(n):
     """calculates the fewest number of operations
     needed to result in exactly n H characters """
-    if type(n) != int or n <=1:
+    if type(n) != int or n <= 1:
         return 0
-    if _isprime(n) == True:
+    if _isprime(n) is True:
         return n
     else:
         li = []
