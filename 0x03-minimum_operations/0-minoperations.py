@@ -4,6 +4,16 @@ this file contains the min operations algorithm
 """
 
 
+def _isprime(n):
+    """ checks for primality of n"""
+    if n < 2:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+        else:
+            return True
+
 def ops_registry(li, n, lenchar, last_batch_copied):
     """ dynamic programming algo"""
     if lenchar == n:
@@ -23,8 +33,11 @@ def ops_registry(li, n, lenchar, last_batch_copied):
 def minOperations(n):
     """calculates the fewest number of operations
     needed to result in exactly n H characters """
-    li = []
-    if n <= 1:
+    if type(n) != int or n <=1:
         return 0
-    ops_registry(li, n, 1, 0)
-    return len(li)
+    if _isprime(n) == True:
+        return n
+    else:
+        li = []
+        ops_registry(li, n, 1, 0)
+        return len(li)
