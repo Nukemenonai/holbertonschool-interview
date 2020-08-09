@@ -17,7 +17,7 @@ def _isprime(n):
 
 def ops_registry(li, n, lenchar, last_batch_copied):
     """ dynamic programming algo"""
-    if lenchar == n:
+    if lenchar >= n:
         return
     if lenchar <= int(n / 2):
         li.append('cpa')
