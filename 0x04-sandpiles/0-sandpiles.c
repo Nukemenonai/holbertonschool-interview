@@ -98,8 +98,6 @@ void stabilizer(int grid1[3][3], int grid2[3][3])
 	}
 
 	sum_piles(grid1, grid2);
-	printf("=\n");
-	_print_grid(grid1);
 }
 
 /**
