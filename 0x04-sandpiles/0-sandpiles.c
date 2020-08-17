@@ -11,18 +11,18 @@
 */
 void _print_grid(int grid[3][3])
 {
-    int i, j;
+	int i, j;
 
-    for (i = 0; i < 3; i++)
-    {
-        for (j = 0; j < 3; j++)
-        {
-            if (j)
-                printf(" ");
-            printf("%d", grid[i][j]);
-        }
-        printf("\n");
-    }
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			if (j)
+				printf(" ");
+			printf("%d", grid[i][j]);
+		}
+		printf("\n");
+	}
 }
 
 /**
@@ -35,9 +35,9 @@ void sum_piles(int grid1[3][3], int grid2[3][3])
 {
 	int i, j;
 
-	for (i = 0; i< 3; i++)
+	for (i = 0; i < 3; i++)
 	{
-		for(j = 0; j < 3; j++)
+		for (j = 0; j < 3; j++)
 		{
 			grid1[i][j] += grid2[i][j];
 		}
@@ -54,9 +54,9 @@ int checker(int grid[3][3])
 {
 	int i, j;
 
-	for (i = 0; i< 3; i++)
+	for (i = 0; i < 3; i++)
 	{
-		for(j = 0; j < 3; j++)
+		for (j = 0; j < 3; j++)
 		{
 			if (grid[i][j] >= 4)
 				return (1);
@@ -78,11 +78,11 @@ void stabilizer(int grid1[3][3], int grid2[3][3])
 		for (j = 0; j < 3; j++)
 			grid2[i][j] = 0;
 
-	for (i = 0; i<3; i++)
+	for (i = 0; i < 3; i++)
 	{
-		for(j = 0; j < 3; j++)
+		for (j = 0; j < 3; j++)
 		{
-			if(grid1[i][j] > 3)
+			if (grid1[i][j] > 3)
 			{
 				if (i - 1 >= 0)
 					grid2[i - 1][j] += 1;
@@ -113,6 +113,6 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 	sum_piles(grid1, grid2);
 	printf("=\n");
 	_print_grid(grid1);
-	while(checker(grid1) == 1)
+	while (checker(grid1) == 1)
 		stabilizer(grid1, grid2);
 }
