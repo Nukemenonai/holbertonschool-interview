@@ -111,8 +111,10 @@ void stabilizer(int grid1[3][3], int grid2[3][3])
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
 	sum_piles(grid1, grid2);
-	printf("=\n");
-	_print_grid(grid1);
 	while (checker(grid1) == 1)
+	{
+		printf("=\n");
+		_print_grid(grid1);
 		stabilizer(grid1, grid2);
+	}
 }
