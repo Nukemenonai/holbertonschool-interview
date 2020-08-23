@@ -3,8 +3,9 @@
 #include "lists.h"
 
 /**
- * is_palindrome - checks if linked list is a palindrome
+ * palindrome - checks if linked list is a palindrome
  * @head: pointer to head of list
+ * @len: the len of the linked list
  * Return: 0 if not palindrome else 1
  */
 
@@ -26,7 +27,7 @@ int palindrome(listint_t **head, int len)
 	}
 	arr[i] = '\0';
 
-	for (i=0, j=(len - 1); i<=(len/2); i++, j--)
+	for (i = 0, j = (len - 1); i <= (len / 2); i++, j--)
 	{
 		if (arr[i] != arr[j])
 			return (0);
@@ -48,7 +49,7 @@ int is_palindrome(listint_t **head)
 	while (tmp != NULL)
 	{
 		tmp = tmp->next;
-		len ++;
+		len++;
 	}
 	int res = palindrome(head, len);
 
