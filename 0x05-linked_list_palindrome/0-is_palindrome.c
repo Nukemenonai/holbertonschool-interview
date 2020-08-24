@@ -3,55 +3,39 @@
 #include "lists.h"
 
 /**
- * palindrome - checks if linked list is a palindrome
- * @head: pointer to head of list
- * @len: the len of the linked list
- * Return: 0 if not palindrome else 1
+ * palindromechecker - cheks if a linked list is a palindrome
+ *
+ * @left: the pointer to the that moves to the left
+ * @right: pointer that moves right
+ * Return: 1 if its pal 0 if not
  */
-
-int palindrome(listint_t **head, int len)
+int palindromechecker(listint_t **left, listint_t *right)
 {
-	int i, j;
-	int arr[len + 1];
-	listint_t *tmp = *head;
+	int isp;
 
-	if (!*head || (*head)->next == NULL)
+	if (right == NULL)
 		return (1);
 
-	i = 0;
-	while (tmp != NULL)
-	{
-		arr[i] = tmp->n;
-		tmp = tmp->next;
-		i++;
-	}
-	arr[i] = '\0';
+	isp = palindromechecker(left, right->next);
+	if (isp == 0)
+		return (0);
+	isp = (right->n == (*left)->n);
+	*left = (*left)->next;
 
-	for (i = 0, j = (len - 1); i <= (len / 2); i++, j--)
-	{
-		if (arr[i] != arr[j])
-			return (0);
-	}
-	return (1);
+	return (isp);
 }
-
 /**
- * is_palindrome - checks if linked list is a palindrome
- * @head: pointer to head of list
- * Return: 0 if not palindrome else 1
+ * is_palindrome - cheks if a linked list is a palindrome
+ *
+ * @head: the pointer to the first node
+ *
+ * Return: 1 if its pal 0 if not
  */
+
 
 int is_palindrome(listint_t **head)
 {
-	int len = 0;
-	listint_t *tmp = *head;
+	int a = palindromechecker(head, *head);
 
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		len++;
-	}
-	int res = palindrome(head, len);
-
-	return (res);
+	return (a);
 }
