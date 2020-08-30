@@ -20,7 +20,7 @@ try:
         i += 1
         size += int(line.split()[-1])
         dict[str(line.split()[7])] += 1
-        if i % 10 == 0:
+        if i != 0 and i % 10 == 0:
             print("File size: {}".format(size))
             for key in sorted(dict.keys()):
                 if dict[key] != 0:
