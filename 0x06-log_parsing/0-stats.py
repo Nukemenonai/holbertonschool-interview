@@ -15,7 +15,6 @@ dict = {'200': 0,
         '405': 0,
         '500': 0}
 
-
 try:
     for line in sys.stdin:
         i += 1
@@ -26,10 +25,10 @@ try:
             for key in sorted(dict.keys()):
                 if dict[key] != 0:
                     print("{}: {}".format(key, dict[key]))
-                    dict[key] = 0
 except KeyboardInterrupt:
     print("File size: {}".format(size))
     for key in sorted(dict.keys()):
         if dict[key] != 0:
             print("{}: {}".format(key, dict[key]))
             dict[key] = 0
+    raise
