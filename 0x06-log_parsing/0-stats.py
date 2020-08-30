@@ -30,5 +30,4 @@ except KeyboardInterrupt:
     for key in sorted(dict.keys()):
         if dict[key] != 0:
             print("{}: {}".format(key, dict[key]))
-            dict[key] = 0
     raise
