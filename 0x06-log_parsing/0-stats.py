@@ -19,7 +19,8 @@ try:
     for line in sys.stdin:
         i += 1
         size += int(line.split()[-1])
-        dict[str(line.split()[7])] += 1
+        if str(line.split()[7]) in dict.keys():
+            dict[str(line.split()[7])] += 1
         if i != 0 and i % 10 == 0:
             print("File size: {}".format(size))
             for key in sorted(dict.keys()):
