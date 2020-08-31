@@ -11,8 +11,8 @@ def print_log(size, dictionary):
         if dict[key] != 0:
             print("{}: {}".format(key, dict[key]))
 
-
-i = size = 0
+i = 0
+size = 0
 dict = {'200': 0,
         '301': 0,
         '400': 0,
@@ -26,10 +26,11 @@ try:
     for line in sys.stdin:
         if i != 0 and i % 10 == 0:
             print_log(size, dict)
-        size += int(line.split()[-1])
         i += 1
-        if str(line.split()[7]) in dict.keys():
-            dict[str(line.split()[7])] += 1
+        size += int(line.split()[-1])
+
+        if str(line.split()[-2]) in dict.keys():
+            dict[str(line.split()[-2])] += 1
     print_log(size, dict)
 
 except KeyboardInterrupt:
