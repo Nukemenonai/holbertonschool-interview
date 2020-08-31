@@ -3,6 +3,7 @@
 
 import sys
 
+
 def print_log(size, dictionary):
     """Prints the summary of the log parsing"""
     print("File size: {}".format(size))
@@ -19,17 +20,13 @@ dict = {'200': 0,
         '403': 0,
         '404': 0,
         '405': 0,
-        '500': 0
-}
+        '500': 0}
 
 try:
     for line in sys.stdin:
         if i != 0 and i % 10 == 0:
             print_log(size, dict)
-        try:
-            size += int(line.split()[-1])
-        except:
-            pass
+        size += int(line.split()[-1])
         i += 1
         if str(line.split()[7]) in dict.keys():
             dict[str(line.split()[7])] += 1
