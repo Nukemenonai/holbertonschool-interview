@@ -24,11 +24,13 @@ dict = {'200': 0,
 
 try:
     for line in sys.stdin:
-        i += 1
-        if i % 10 == 0:
+        if i != 0 and i % 10 == 0:
             print_log(size, dict)
-        size += int(line.split()[-1])
-
+        i += 1
+        try:
+            size += int(line.split()[-1])
+        except:
+            pass
         if str(line.split()[-2]) in dict.keys():
             dict[str(line.split()[-2])] += 1
     print_log(size, dict)
