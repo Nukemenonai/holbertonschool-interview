@@ -24,9 +24,9 @@ dict = {'200': 0,
 
 try:
     for line in sys.stdin:
-        if i != 0 and i % 10 == 0:
-            print_log(size, dict)
         i += 1
+        if i % 10 == 0:
+            print_log(size, dict)
         size += int(line.split()[-1])
 
         if str(line.split()[-2]) in dict.keys():
