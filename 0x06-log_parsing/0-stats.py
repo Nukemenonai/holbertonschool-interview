@@ -3,6 +3,14 @@
 
 import sys
 
+def print_log(size, dictionary):
+    """Prints the summary of the log parsing"""
+    print("File size: {}".format(size))
+    for key in sorted(dict.keys()):
+        if dict[key] != 0:
+            print("{}: {}".format(key, dict[key]))
+
+
 i = size = 0
 dict = {'200': 0,
         '301': 0,
@@ -16,27 +24,17 @@ dict = {'200': 0,
 
 try:
     for line in sys.stdin:
-        try:
-            if i != 0 and i % 10 == 0:
-                print("File size: {}".format(size))
-                for key in sorted(dict.keys()):
-                    if dict[key] != 0:
-                        print("{}: {}".format(key, dict[key]))
-        except:
-            pass
+        if i != 0 and i % 10 == 0:
+            print_log(size, dict)
         try:
             size += int(line.split()[-1])
         except:
             pass
         i += 1
-        try:
-            if str(line.split()[7]) in dict.keys():
-                dict[str(line.split()[7])] += 1
-        except:
-            pass
+        if str(line.split()[7]) in dict.keys():
+            dict[str(line.split()[7])] += 1
+    print_log(size, dict)
+
 except KeyboardInterrupt:
-    print("File size: {}".format(size))
-    for key in sorted(dict.keys()):
-        if dict[key] != 0:
-            print("{}: {}".format(key, dict[key]))
+    print_log(size, dict)
     raise
