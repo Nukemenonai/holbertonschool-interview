@@ -17,7 +17,10 @@ dict = {'200': 0,
 try:
     for line in sys.stdin:
         i += 1
-        size += int(line.split()[-1])
+        try:
+            size += int(line.split()[-1])
+        except:
+            pass
         try:
             if str(line.split()[7]) in dict.keys():
                 dict[str(line.split()[7])] += 1
