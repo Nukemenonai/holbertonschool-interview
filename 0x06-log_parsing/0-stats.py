@@ -31,8 +31,11 @@ try:
             size += int(line.split()[-1])
         except:
             pass
-        if str(line.split()[-2]) in dict.keys():
-            dict[str(line.split()[-2])] += 1
+        try:
+            if str(line.split()[-2]) in dict.keys():
+                dict[str(line.split()[-2])] += 1
+        except:
+            pass
     print_log(size, dict)
 
 except KeyboardInterrupt:
