@@ -4,23 +4,25 @@
 #include "palindrome.h"
 
 /**
- * reverse - reverses a number
+ * reverse - reverses a number through division
  * @n: number to reverse
- *
+ * @res:result to be returned
+ * @remainder: remainder of the operation
+ * @quot: the quotient of the operation
  * Return: reversed number
  */
 
 unsigned long reverse(unsigned long n, unsigned long res,
-	    unsigned long remainder, unsigned long quot)
+		      unsigned long remainder, unsigned long quot)
 {
 
-	remainder = n%10;
+	remainder = n % 10;
 	res = (res * 10) + remainder;
-	quot = quot/10;
+	quot = quot / 10;
 	if (quot == 0)
-		return res;
+		return (res);
 	else
-		return reverse(quot, res, 0, quot);
+		return (reverse(quot, res, 0, quot));
 }
 
 
@@ -42,5 +44,5 @@ int is_palindrome(unsigned long n)
 
 	reversed = reverse(n, res, remainder, quot);
 
-	return (reversed == n ? 1: 0);
+	return (reversed == n ? 1 : 0);
 }
