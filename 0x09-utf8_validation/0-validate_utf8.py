@@ -10,8 +10,6 @@ def validUTF8(data):
     data: list of integers
     returns: true if valid else 0
     """
-    if not data:
-        return False
     binary = []
     for number in data:
         if type(number) != int:
