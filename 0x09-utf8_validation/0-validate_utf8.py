@@ -14,7 +14,7 @@ def validUTF8(data):
         return False
     binary = []
     for number in data:
-        if type number != int:
+        if type(number) != int:
             return False
         binary.append("{:08b}".format(number))
     for byte in binary:
