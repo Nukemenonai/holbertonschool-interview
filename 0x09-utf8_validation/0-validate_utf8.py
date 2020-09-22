@@ -19,7 +19,7 @@ def validUTF8(data):
         if int(byte[0]) == 0:
             continue
         ones = byte.count('1')
-        if ones >= 4 or ones <= 1:
+        if ones > 4 or ones == 1:
             return False
         for _ in range(ones - 1):
             try:
