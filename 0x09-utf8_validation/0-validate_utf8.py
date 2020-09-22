@@ -26,6 +26,6 @@ def validUTF8(data):
                 byte = next(binary)
             except StopIteration:
                 return False
-            if byte[0:2] != [1, 0]:
+            if byte[:2] != ['10']:
                 return False
     return True
