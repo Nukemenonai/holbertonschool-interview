@@ -9,23 +9,21 @@ def validUTF8(data):
     checks if an array if integers representing a UTF-8 is valid UTF-8
     data: list of integers
     returns: true if valid else 0
+
     """
-    binary = []
-    for number in data:
-        if type(number) != int:
-            return False
-        binary.append("{:08b}".format(number))
-    for byte in binary:
-        if int(byte[0]) == 0:
-            continue
-        ones = byte.count('1')
-        if ones > 4 or ones == 1:
-            return False
-        for _ in range(ones - 1):
-            try:
-                byte = next(binary)
-            except StopIteration:
+    n_bytes = 0
+    for num in data:
+        bin_rep = format(num, '#010b')[-8:]
+        if n_bytes == 0:
+            for bit in bin_rep:
+                if bit == '0': break
+                n_bytes += 1
+            if n_bytes == 0:
+                continue
+            if n_bytes == 1 or n_bytes > 4:
+                    return False
+        else:
+            if not (bin_rep[0] == '1' and bin_rep[1] == '0'):
                 return False
-            if byte[:2] != ['10']:
-                return False
-    return True
+        n_bytes -= 1
+    return n_bytes == 0
