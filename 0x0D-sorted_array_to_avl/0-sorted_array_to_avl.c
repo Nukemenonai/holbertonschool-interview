@@ -6,7 +6,7 @@
 * new_node - creates a new node in a binary tree
 * @parent: *pointer to its parent node
 * @value: the value that the node contains
-* Return: node. NULL on failure 
+* Return: node. NULL on failure
 */
 
 binary_tree_t *new_node(binary_tree_t *parent, int value)
@@ -20,14 +20,14 @@ binary_tree_t *new_node(binary_tree_t *parent, int value)
 
 	new->parent = parent;
 	new->left = NULL;
-	new->right = NULL; 
-	new->n = value; 
+	new->right = NULL;
+	new->n = value;
 
 	return (new);
 }
 
 /**
-* insert - function to sort insert a node 
+* insert - function to sort insert a node
 * @array: pointer to the array to be converted
 * @min: lower limit
 * @max: upper limit
@@ -41,13 +41,13 @@ avl_t *insert(int *array, int min, int max)
 
 	if (min > max)
 		return (NULL);
-	
+
 	half = (max + min) / 2;
 
 	tree = new_node(NULL, array[half]);
 	if (!tree)
 		return (NULL);
-	
+
 	tree->left = insert(array, min, half - 1);
 	tree->right = insert(array, half + 1, max);
 
@@ -55,7 +55,7 @@ avl_t *insert(int *array, int min, int max)
 		tree->left->parent = tree;
 	if (tree->right)
 		tree->right->parent = tree;
-	
+
 	return (tree);
 }
 
@@ -73,8 +73,8 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	if (!array)
 		return (NULL);
 	if (size < 1)
-		return (NULL); 
-	
+		return (NULL);
+
 	rt = insert(array, 0, size - 1);
 
 	return (rt);
