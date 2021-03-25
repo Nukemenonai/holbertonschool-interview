@@ -6,6 +6,7 @@
 * new_node - creates a new node in a binary tree
 * @parent: *pointer to its parent node
 * @value: the value that the node contains
+*
 * Return: node. NULL on failure
 */
 
@@ -31,6 +32,7 @@ binary_tree_t *new_node(binary_tree_t *parent, int value)
 * @array: pointer to the array to be converted
 * @min: lower limit
 * @max: upper limit
+*
 * Return: pointer to the root node of the AVL tree
 */
 
@@ -63,6 +65,7 @@ avl_t *insert(int *array, int min, int max)
 * sorted_array_to_avl - builds an AVL tree from an array
 * @array: pointer to the first element of the array
 * @size: size of the array
+*
 * Return: the pointer to the root node of the AVL tree or NULL
 */
 
