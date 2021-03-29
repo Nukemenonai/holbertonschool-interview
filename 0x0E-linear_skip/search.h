@@ -1,5 +1,5 @@
-#ifndef _SEARCH_H_
-#define _SEARCH_H_
+#ifndef SEARCH_H
+#define SEARCH_H
 
 #include <stddef.h>
 #include <stdio.h>
@@ -20,10 +20,10 @@
  */
 typedef struct skiplist_s
 {
-    int n;
-    size_t index;
-    struct skiplist_s *next;
-    struct skiplist_s *express;
+	int n;
+	size_t index;
+	struct skiplist_s *next;
+	struct skiplist_s *express;
 } skiplist_t;
 
 skiplist_t *linear_skip(skiplist_t *head, int value);
