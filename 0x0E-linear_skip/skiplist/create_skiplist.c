@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <math.h>
-#include "search.h"
+#include "../search.h"
+
+void free_skiplist(skiplist_t *list);
 
 /**
  * init_express - Initializes the express lane of the linked list
