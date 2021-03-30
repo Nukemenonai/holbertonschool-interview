@@ -16,7 +16,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 	if (!list)
 		return (NULL);
 
-	pos = list, min = list;	
+	pos = list, min = list;
 
 	while (pos && pos->next && (pos->n) < value)
 	{
