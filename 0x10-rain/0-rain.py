@@ -22,11 +22,11 @@ def rain(walls):
         left = walls[i]
         for j in range(i):
             left = max(left, walls[j])
-        
+
         right = walls[i]
 
         for j in range(i + 1, n):
-            right = max(right, walls[j]);
+            right = max(right, walls[j])
 
         total += (min(left, right) - walls[i])
 
