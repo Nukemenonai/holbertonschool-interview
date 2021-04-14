@@ -11,17 +11,23 @@ def rain(walls):
     water will be retained after it rains.
     """
     total = 0
+    n = len(walls)
 
-    if len(walls) == 0:
+    if n == 0:
         return 0
 
     total = 0
 
-    for i in range(len(walls)):
-        if i == 0 or i == (len(walls)):
-            continue
-        if walls[i - 1] > walls[i] and walls[i + 1] > walls[i]:
-            # este es un hueco
-            total += min(walls[i - 1], walls[i + 1])
+    for i in range(1,  n - 1):
+        left = walls[i]
+        for j in range(i):
+            left = max(left, walls[j])
+        
+        right = walls[i]
+
+        for j in range(i + 1, n):
+            right = max(right, walls[j]);
+
+        total += (min(left, right) - walls[i])
 
     return total
