@@ -7,12 +7,11 @@ import requests
 
 BASE_URL = "https://www.reddit.com/"
 HEADERS = {'user-agent': 'holbiapp/1.0.0'}
-     
+
+
 def count_words(subreddit, word_list, after="", word_dic={}):
     """
-    Returns a list containing the titles of all hot articles for a
-    given subreddit. If no results are found for the given subreddit,
-    the function should return None.
+    returns a sorted count of a given kyword or set of keywords
     """
     if not word_dic:
         for word in word_list:
@@ -33,11 +32,14 @@ def count_words(subreddit, word_list, after="", word_dic={}):
         'after': after
     }
 
-    res = requests.get(url, headers=HEADERS, params=params, allow_redirects=False)
+    res = requests.get(url,
+                       headers=HEADERS,
+                       params=params,
+                       allow_redirects=False)
 
     if res.status_code != 200:
         return None
-    # 
+
     try:
         json_body = res.json()
 
@@ -50,7 +52,7 @@ def count_words(subreddit, word_list, after="", word_dic={}):
         children = data.get("children")
         for child in children:
             post = child.get("data")
-            title = post.get("title")   
+            title = post.get("title")
             lower = [s.lower() for s in title.split(' ')]
 
             for w in word_list:
