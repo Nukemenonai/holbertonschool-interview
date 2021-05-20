@@ -5,7 +5,7 @@
 /**
  * _isnumber - checks if string is number
  *
- * @s: string
+ * @str: string
  *
  * Return: 1 if string is number, else 0
  */
@@ -21,7 +21,7 @@ int _isnumber(char *str)
 		{
 			val = 0;
 			break;
-    	}
+		}
 	}
 	return (val);
 }
