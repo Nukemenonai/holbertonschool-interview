@@ -29,7 +29,15 @@ listint_t *find_listint_loop(listint_t *head)
 
 		if (hare == tortoise)
 		{
-			return (tortoise);
+			tortoise = head;
+
+			while(tortoise && hare)
+			{
+				if (tortoise == hare)
+					return tortoise;
+				tortoise = tortoise->next;
+				hare = hare->next;
+			}
 		}
 	}
 
