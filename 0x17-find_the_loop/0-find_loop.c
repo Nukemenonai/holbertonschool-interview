@@ -31,10 +31,10 @@ listint_t *find_listint_loop(listint_t *head)
 		{
 			tortoise = head;
 
-			while(tortoise && hare)
+			while (tortoise && hare)
 			{
 				if (tortoise == hare)
-					return tortoise;
+					return (tortoise);
 				tortoise = tortoise->next;
 				hare = hare->next;
 			}
