@@ -101,7 +101,7 @@ void TopDownSplitMerge(int *other, size_t begin, size_t end, int *array)
  *
  *Return: Nothing, it's a void
  */
- 
+
 void merge_sort(int *array, size_t size)
 {
 	int *other = malloc(size * sizeof(int));
