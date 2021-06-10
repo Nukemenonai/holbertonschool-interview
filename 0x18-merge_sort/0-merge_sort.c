@@ -99,7 +99,7 @@ void TopDownSplitMerge(int *other, size_t begin, size_t end, int *array)
  *@array: unodered array
  *@size: size of the array
  *
- *Return: Nothing, it's a void
+ *Return: Nothing
  */
 
 void merge_sort(int *array, size_t size)
