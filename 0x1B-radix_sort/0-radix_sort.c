@@ -1,11 +1,18 @@
 #include <stdlib.h>
 #include "sort.h"
 
-
+/**
+* maxNum - finds the biggest number in an array
+*
+* @array: the pointer to the array to be evaluated
+* @size: the size of the array
+*
+* Return: the biggest element in the array
+*/
 int maxNum(int *array, size_t size)
 {
 	size_t i;
-	int max = 0; 
+	int max = 0;
 
 	for (i = 0; i < size; i++)
 	{
@@ -13,7 +20,7 @@ int maxNum(int *array, size_t size)
 			max = array[i];
 	}
 	return (max);
-}	
+}
 
 /**
 * auxSort - auxiliary function to sort the array
@@ -50,19 +57,19 @@ void auxSort(int *array, int size, int lsd)
 
 }
 /**
- * radix_sort - sorts an array of integers in ascending order 
+ * radix_sort - sorts an array of integers in ascending order
  * using the LSD Radix sort algorithm
  *
  * @array: array of data to be sorted
- * @size: size of the data array 
+ * @size: size of the data array
  *
  * Return: None
 */
 
 void radix_sort(int *array, size_t size)
 {
-	int max, exp; 
-	
+	int max, exp;
+
 	if (size < 2)
 		return;
 
