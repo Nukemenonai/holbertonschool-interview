@@ -62,7 +62,7 @@ int tree_is_bst(const binary_tree_t *tree)
 }
 
 /**
- * avl_check - checks if binary tree is a valid AVL 
+ * avl_check - checks if binary tree is a valid AVL
  * @tree: pointer to the root node of the tree to check
  *
  * Return: 1 if tree is a valid AVL Tree, and 0 otherwise
